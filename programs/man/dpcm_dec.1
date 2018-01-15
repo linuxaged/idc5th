@@ -1,0 +1,61 @@
+.TH dpcm_dec 1 
+.UC 4
+.SH NAME
+dpcm_dec \- reconstructs a speech or audio file compressed using dpcm_enc
+and predictor.
+.SH SYNOPSIS
+.HP
+.B dpcm_dec
+[
+.BI \-i " infile"
+][
+.BI \-o " outfile"
+][
+.B \-h
+]
+.SH DESCRIPTION
+The program reconstructs a speech or audio file encoded using dpcm_enc.
+The program reads the names of the quantizer file and predictor file
+from the compressed file.  These files should be available to the program
+in order for reconstruction to take place.  The output is stored in raw format
+(no headers) using 16 bits/sample.  If you want to play the output you might
+have to swap the byte order depending on your machine.
+
+The quantizer file contains the number of levels, boundary and
+reconstruction values for the nonuniform quantizer.  The first
+number is the number of reconstruction levels in the quantizer, numlev.
+The next (numlev-1) numbers are the inner boundary values (note
+that there are numlev+1 boundary values.  The extreme values are
+assumed to be plus and minus infinity.  The next numlev values
+are the reconstruction values.  Some quan_files should be available
+at the location you found this program.  The name of the files
+are of the form xxnn.dat, xx is ga for Gaussian, la for Laplacian
+and gm for Gamma.  nn denotes the number of levels.
+
+The predictor file contains the order of the predictor followed by
+the predictor coefficients.
+
+
+The program needs the following subroutines:
+.IP nuquan_dec
+.IP predictor
+.IP unstuff
+.LP
+and the header file idc.h
+
+.SH OPTIONS
+.TP
+.BI \-i " infile"
+This is the compressed  speech or audio file.  
+.TP
+.BI \-o " outfile"
+The reconstructed speech or audio is stored in outfile.  The output samples
+are stored using 16 bits/ sample.
+.TP
+.BI \-h
+This option will provide the usage.
+
+.SH AUTHOR
+Khalid Sayood, University of Nebraska - Lincoln.
+
+

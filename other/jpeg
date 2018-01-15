@@ -1,0 +1,46 @@
+This is an edited version of the README file of the Independent JPEG Group
+
+The software from the Independent JPEG Group (IJG) implements JPEG baseline, 
+extended-sequential, and progressive compression processes.  The software
+has been updated on a more or less regular basis by IJG.
+
+The "official" archive site for this software is ftp.uu.net (Internet
+address 192.48.96.9).  The most recent released version can always be found
+there in directory graphics/jpeg.  If you are on the Internet, you
+can retrieve files from ftp.uu.net by standard anonymous FTP.  If you don't
+have FTP access, UUNET's archives are also available via UUCP; contact
+help@uunet.uu.net for information on retrieving files that way.
+
+Numerous Internet sites maintain copies of the UUNET files; in particular,
+you can probably find a copy at any site that archives comp.sources.misc
+submissions.  However, only ftp.uu.net is guaranteed to have the latest
+official version.
+
+You can also obtain this software from CompuServe, in the GRAPHSUPPORT forum
+(GO GRAPHSUP), library 12 "JPEG Tools".  Again, CompuServe is not guaranteed
+to have the very latest version.
+
+The JPEG FAQ (Frequently Asked Questions) article is a useful source of
+general information about JPEG.  It is updated constantly and therefore is
+not included in this distribution.  The FAQ is posted every two weeks to
+Usenet newsgroups comp.graphics, news.answers, and other groups.  You can
+always obtain the latest version from the news.answers archive at
+rtfm.mit.edu.  By FTP, fetch /pub/usenet/news.answers/jpeg-faq/part1 and
+.../part2.  If you don't have FTP, send e-mail to mail-server@rtfm.mit.edu
+with body
+	send usenet/news.answers/jpeg-faq/part1
+	send usenet/news.answers/jpeg-faq/part2
+
+
+
+Serious users of this software (particularly those incorporating it into
+larger programs) should contact IJG at jpeg-info@uunet.uu.net to be added to
+our electronic mailing list.  Mailing list members are notified of updates
+and have a chance to participate in technical discussions, etc.
+
+This software is the work of Tom Lane, Philip Gladstone, Luis Ortiz, Jim
+Boucher, Lee Crocker, Julian Minguillon, George Phillips, Davide Rossi,
+Ge' Weijers, and other members of the Independent JPEG Group.
+
+IJG is not associated with the official ISO JPEG standards committee.
+

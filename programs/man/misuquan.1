@@ -1,0 +1,86 @@
+.TH misuquan 1 
+.UC 4
+.SH NAME
+misuquan \- explores effect of mismatch on uniform quantizers.
+.SH SYNOPSIS
+.HP
+.B misuquan
+[
+.BI \-l " numlev"
+][
+.BI \-q " stepsize"
+][
+.BI \-n " num"
+][
+.BI \-d " distribution"
+][
+.BI \-b " min_std"
+][
+.BI \-m " max_std"
+][
+.BI \-s " std_step"
+][
+.B \-e
+][
+.B \-h
+]
+.SH DESCRIPTION
+This program can be used to explore the effect of mismatch between the
+assumptions about the quantizer input used to design a uniform quantizer,
+and the actual input statistics.  This program can be used to explore
+both mismatch between the assumed and actual distribution and mismatch
+between the actual and assumed variances.  The quantizer and input 
+parameters are specified by the user.  
+
+
+The program simulates a range of input variances, specified by the user.
+
+The program needs the following subroutines:
+.IP rangen
+.IP uquan_enc
+.IP uquan_dec
+.IP ent
+.LP
+and the header file idc.h
+
+.SH OPTIONS
+.TP
+.BI \-l " numlev"
+This is the size of the reproduction alphabet of the quantizer.
+.TP
+.BI \-q " stepsize"
+This is the size of the quantization interval (Delta).
+.TP
+.BI \-n " num"
+This is the number of inputs to be generate for the simulation.  It is difficult
+to get a reasonably accurate estimate with num less than 10,000.
+.TP
+.BI \-d " distribution"
+This is a number specifying the input probability distribution
+A value of 0 corresponds to Uniform distribution.
+A value of 1 corresponds to Gaussian distribution.
+A value of 2 corresponds to Laplacian distribution.
+A value of 3 corresponds to Gamma distribution.  This
+last option should be used with care, as the function
+generating the Gamma distribution is not entirely reliable.
+.TP
+.BI \-b " min_std"
+This is the smallest value of the range of standard deviations to be generated
+.TP
+.BI \-m " max_std"
+This is the largest value of the range of standard deviations to be generated
+.TP
+.BI \-s " std_step"
+The standard deviations to be generated are incremented in steps of std_step.
+.TP
+.BI \-e
+If this option is specified the program calculates the output entropy
+of the quantizer.
+.TP
+.BI \-h
+This option will provide the usage.
+
+.SH AUTHOR
+Khalid Sayood, University of Nebraska - Lincoln.
+
+

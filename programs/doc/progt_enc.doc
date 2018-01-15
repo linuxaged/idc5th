@@ -1,0 +1,53 @@
+NAME
+     progt_enc - program to experiment with different  approxima-
+     tions to use for progressive image transmission.
+
+SYNOPSIS
+     progt_enc [ -i infile ][ -o outfile ][  -x  row_size  ][  -y
+          col_size ][ -m mode ][ -b blocksize ][ -h ]
+
+DESCRIPTION
+     This program  can  be  used  to  experiment  with  different
+     approximations  to use for progressive transmission applica-
+     tion.  Currently there are two modes available.  In  mode  1
+     each  block  of  pixels  is approximated by the value of the
+     pixel in the top left corner of the block.  In mode  2  each
+     block  of pixels is approximated by the average value of the
+     pixels in the block.  Further modes can easily be added.
+
+     The program needs the following subroutines:
+
+     readimage
+
+     image_size
+
+     and the header file idc.h
+
+
+OPTIONS
+     -i infile
+          The name of the file containing the input  image.   The
+          image is assumed to be stored using 8 bits/pixel in raw
+          format.
+
+     -o outfile
+          This will contain the approximation to the input image.
+          If  this  option  is  not  used  the program writes the
+          approximation to standard out.  This is useful  if  the
+          output  of  the  program  is  to be piped directly to a
+          variable length coder.
+
+     -m mode
+          There are currently two modes as described above.
+
+     -x row_size
+          This is the number of pixels in each row of the image.
+
+     -y col_size
+          This is the number of rows of pixels.
+
+
+     -h   This option will provide the usage.
+
+AUTHOR
+     Khalid Sayood, University of Nebraska - Lincoln.

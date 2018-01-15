@@ -1,0 +1,35 @@
+NAME
+     jpegll_dec - reconstructs an image that  has  been  decorre-
+     lated by jpegll_enc.
+
+SYNOPSIS
+     jpegll_dec [ -i infile ][ -o outfile ][ -h ]
+
+DESCRIPTION
+     This program reconstructs a grey-level (8 bits/pixel)  image
+     from  the residuals obtained by using jpegll_enc.  The input
+     can come from a file or from standard in.  The output can be
+     written  to  a  file  or  standard  out.   If  the output of
+     jpegll_enc was encoded using a variable length code, a vari-
+     able   length   decoder   needs  to  be  employed  prior  to
+     jpegll_dec.  The output of the variable length  decoder  can
+     be piped to this program.
+
+     The program does not need any subroutines.
+
+
+OPTIONS
+     -i infile
+          The  name  of  the  file  containing  the   output   of
+          jpegll_enc.   If  this  option  is not used the program
+          reads from standard in.
+
+     -o outfile
+          This will contain the  reconstructed  image.   If  this
+          option  is  not  used  the  program writes the image to
+          standard out.
+
+     -h   This will produce the usage.
+
+AUTHOR
+     Khalid Sayood, University of Nebraska - Lincoln.

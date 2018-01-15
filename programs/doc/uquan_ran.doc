@@ -1,0 +1,61 @@
+NAME
+     uquan_ran - explores uniform quantization of random inputs.
+
+SYNOPSIS
+     uquan_ran [ -l numlev ][ -s stepsize ][ -n num ][ -d distri-
+          bution ][ -e ][ -h ]
+
+DESCRIPTION
+     This program can be used to explore the performance of  uni-
+     form quantizers operating on random inputs.  Four possibili-
+     ties  for  the  input  distribution  are  available.   These
+     include  uniform,  Laplacian, Gaussian, and gamma (the gamma
+     distribution is not very accurate).  More distributions  can
+     be  added by modifying rangen.c and the call to rangen.  The
+     quantizer parameters are specified by the user through  com-
+     mand line arguments or through answer to prompts.
+
+     The program needs the following subroutines:
+
+     rangen
+
+     uquan_enc
+
+     uquan_dec
+
+     ent
+
+     and the header file idc.h
+
+
+OPTIONS
+     -l numlev
+          This is the size of the reproduction  alphabet  of  the
+          quantizer.
+
+     -q stepsize
+          This is the size of the quantization interval (Delta).
+
+     -n num
+          This is the number of inputs to  be  generate  for  the
+          simulation.   It is difficult to get a reasonably accu-
+          rate estimate with num less than 10,000.
+
+     -d distribution
+          This is a number specifying the input probability  dis-
+          tribution A value of 0 corresponds to Uniform distribu-
+          tion.  A value of 1 corresponds to  Gaussian  distribu-
+          tion.   A value of 2 corresponds to Laplacian distribu-
+          tion.  A value of 3 corresponds to Gamma  distribution.
+          This last option should be used with care, as the func-
+          tion generating the Gamma distribution is not  entirely
+          reliable.
+
+     -e   If this option is specified the program calculates  the
+          output entropy of the quantizer.
+
+     -h   This option will provide the usage.
+
+
+AUTHOR
+     Khalid Sayood, University of Nebraska - Lincoln.

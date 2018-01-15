@@ -1,0 +1,62 @@
+NAME
+     huff_enc - encodes a file using huffman encoding
+
+SYNOPSIS
+     huff_enc [ -i infile ][ -o outfile  ][  -c  codefile  ][  -s
+          storecode ][ -h ]
+
+DESCRIPTION
+     This program takes a file and encodes it.   It  will  either
+     read  a code to use from a file or it will calculate its own
+     code to use.  The code used will either be  written  at  the
+     start  of  the  encoded file or it can be written to its own
+     file.
+
+
+     The program needs the following subroutines:
+
+     value
+
+     sort
+
+     huff
+
+     files
+
+     create_code
+
+     create_list
+
+     getcode
+
+     and the header file idc.h
+
+
+OPTIONS
+     -i infile
+          The name of the file containing the input. The  program
+          will  check  the size of the file before it encodes it.
+          If this option is not given  the  program  assumes  the
+          input is being piped and will read from stdin.
+
+
+     -o outfile
+          The name of the file the encoded file should be written
+          to.  If this option is not given the program will write
+          to stdout.
+
+     -c codefile
+          The name of the file if you want to use a  stored  code
+          instead  of calculating one. The defalt is to calculate
+          a code.
+
+     -s storecode
+          The name of the file you want the code written to.   If
+          no  filename  is  given  the  code will be written as a
+          header on the encoded file.
+
+     -h   This option will provide the usage.
+
+
+AUTHOR
+     Sherrie Faltys, University of Nebraska - Lincoln.

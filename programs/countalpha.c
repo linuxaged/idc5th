@@ -1,0 +1,55 @@
+#include <stdio.h>
+
+/*******************************************************************************
+*NOTICE:                                                                       *
+*This code is believed by the author to be bug free.  You are free to use and  *
+*modify this code with the understanding that any use, either direct or        *
+*derivative, must contain acknowledgement of its author and source.  The author*
+*makes no warranty of any kind, expressed or implied, of merchantability or    *
+*fitness for a particular purpose.  The author shall not be held liable for any*
+*incidental or consequential damages in connection with or arising out of the  *
+*furnishing, performance, or use of this software.  This software is not       *
+*authorized for use in life support devices or systems.                        *
+********************************************************************************/
+
+main(int argc, char *argv[])
+{
+  int c,i,letter[26], num;
+  float prob[26];
+  FILE *ifp, *ofp;
+
+  if(argc != 3){
+  printf("\n%s%s%s\n%s\n%s\n",
+"Usage: ",argv[0]," infile outfile", 
+"The probability of occurrence of upper and lower case letters",
+"in infile is counted and written to outfile");
+  exit(1);      }
+
+  if((ifp = fopen(argv[1],"r")) == NULL)
+    printf("Input open failed");
+
+  if((ofp = fopen(argv[2],"w")) == NULL)
+    printf("output open failed");
+
+  for(i=0; i<26; i++)
+    letter[i] = 0;
+  num = 0;
+
+  while((c=getc(ifp)) != EOF)
+   {
+    if(c >= 'A' && c <= 'Z')
+      letter[c-'A']++;
+    if(c >= 'a' && c <= 'z')
+      letter[c-'a']++;
+    num++;
+   }
+
+   for(i=0; i<26; i++)
+    {
+    prob[i] = (float) letter[i] / (float) num;
+    fprintf(ofp,"%c  %f\n",'A'+i,prob[i]);
+    }
+}
+
+   
+

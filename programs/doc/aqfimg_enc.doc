@@ -1,0 +1,82 @@
+NAME
+     aqfimg_enc - lossy compression of grey  level  images  using
+     forward adaptive quantization.
+
+SYNOPSIS
+     aqfimg_enc [ -i infile ][ -o outfile ][ -l numlev ][ -b num-
+          bits  ][  -s blocksize ][ -x row_size ][ -y col_size ][
+          -h ]
+
+DESCRIPTION
+     This program provides lossy compression of a  grey-scale  (8
+     bits/pixel)  image using forward adaptive quantization.  The
+     maximum and minumum pixel values in a block of  size  block-
+     size  is obtained and the image is quantized using a uniform
+     quantizer with stepsize equal to the difference between  the
+     minimum  and maximum values divided by the number of levels.
+     The maximum and minimum values for  each  block  are  stored
+     using eight bits while the quantizer labels are stored using
+     [log_2 numlev] bits.  The resulting output  can  be  further
+     compressed using a variable length code.
+
+
+     The program needs the following subroutines:
+
+     readimage
+
+     image_size
+
+     encuqi
+
+     stuffit
+
+     and the header file idc.h
+
+
+OPTIONS
+     -i infile
+          The name of the file containing the input  image.   The
+          image is assumed to be stored using 8 bits/pixel in raw
+          format.
+
+     -o outfile
+          This will contain the compressed  image.   The  various
+          parameters  required  for decompression are also stored
+          in the same file.  If this option is not used the  pro-
+          gram  writes  the  decorrelated  image to standard out.
+          This is useful if the output of the program  is  to  be
+          piped directly to a variable length coder.
+
+     -l numlev
+          If this value is provided numbits need  not  be  speci-
+          fied.   The  number  of  bits  needed  to represent the
+          lables, numbits, need not be specified. numbits is com-
+          puted as 2^numlev.
+
+     -b numbits
+          This is the number of bits needed to  specify  a  quan-
+          tizer label.  If this value is specified, the number of
+          levels, numlev, need not be specified.  numlev is  com-
+          puted as numlev = 2^numbits.
+
+     -s blocksize
+          This is the size of one side of the square  block  over
+          which the quantizer parameters are computed.
+
+     -x row_size
+          This is the number of pixels in each row of the image.
+
+     -y col_size
+          This is the number of rows of pixels.
+
+          If the row_size and col_size are not provided the  pro-
+          gram  attempts to check to see if the image corresponds
+          to any of the standard sizes it is familiar  with.   To
+          add to the list of standard sizes, edit image_size.c
+
+
+     -h   This option will provide the usage.
+
+
+AUTHOR
+     Khalid Sayood, University of Nebraska - Lincoln.

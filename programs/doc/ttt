@@ -1,0 +1,53 @@
+\documentstyle[12pt]{article}
+\parindent 0pt \parskip 5pt
+\textwidth 468pt
+\textheight 632pt
+\oddsidemargin -4.5pt
+\topmargin -9pt
+
+\begin{document}
+\begin{verbatim}
+
+NAME
+     vqimg_dec  -  reconstructs   an   image   compressed   using
+     vqimg_enc.
+
+SYNOPSIS
+     vqimg_dec [ -i cmpfile ][ -o imageout ][ -h ]
+
+DESCRIPTION
+     This program reconstructs an image which had been compressed
+     using vqimg_enc.  The codebook used to compress the image is
+     needed along with the compressed image.   The  name  of  the
+     codebook is read from the compressed file.  If an input file
+     is not specified the input is read from standard in.  If  an
+     output  file is not specified the output is written to stan-
+     dard out. The images are  8  bit  grey-level  images  stored
+     using raster scan order.
+
+     The program needs the following subroutines:
+
+     unstuff
+
+     and the header file idc.h
+
+
+OPTIONS
+     -i cmpfile
+          This is the compressed file.  The  file  also  contains
+          the  name  of the codebook used during vector quantiza-
+          tion.
+
+     -o imageout
+          This is the reconstructed image.  It  is  assumed  that
+          this  image is a grey scale (8 bits/pixel) image and is
+          stored in raster scan order.
+
+     -h   This option will provide the usage.
+
+
+AUTHOR
+     Khalid Sayood, University of Nebraska - Lincoln.
+\end{verbatim}
+
+\end{document}

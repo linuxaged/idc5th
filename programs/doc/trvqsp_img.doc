@@ -1,0 +1,64 @@
+NAME
+     trvqsp_img - trains a vector quantizer  codebook  for  image
+     compression  using  the splitting approach for obtaining the
+     initial codebook.
+
+SYNOPSIS
+     trvqsp_img ts_img codefile [ -b cb_size ][  -t  block_height
+          ][ -w block_width ][ -x row_size ][ -y col_size ][ -h ]
+
+DESCRIPTION
+     This program can be used to train a vector quantizer for use
+     in  image compression using the LBG algorithm.  The codebook
+     is initialized using  the  splitting  approach  proposed  by
+     Linde,  Buzo, and Gray.  The ts_img is the image used as the
+     training set.  The vectors are actually  rectangular  arrays
+     which  are  block_height  pixels  tall by block_width pixels
+     wide.  Thus the dimension of the vector  is  block_height  X
+     block_width.   The images are assumed to be 8 bit grey-level
+     images stored using raster scan order.  The program can take
+     a  long  time  to  run especially if the size of the desired
+     codebook is large.  Therefore it is a good idea to  run  the
+     program in background.
+
+     The dimensions of the image can be specified by the user  or
+     obtained directly by the program.  The program "knows" about
+     only a small set of standard image sizes.  The user can  add
+     to  the  set by editing the file image_size.c.  Or, the user
+     can simply specify the dimensions of the image  at  run-time
+     using the options -x and -y.
+
+     The codefile contains the codebook in  binary  format.   The
+     codebook  is preceded by a 12 byte header which contains the
+     dimensions of the vector as well as the size  of  the  code-
+     book.
+
+     The program needs the following subroutines:
+
+     vqencode
+
+     readimage
+
+     image_size
+
+     and the header file idc.h
+
+
+OPTIONS
+     -b cb_size
+          This is the size of the codebook.
+
+     -t block_height
+          This is the height of a block of  pixels  making  up  a
+          vector.
+
+     -w block_width
+          This is the width of the block of pixels  making  up  a
+          vector.   The dimension of the vector is block_height X
+          block_width.
+
+     -h   This option will provide the usage.
+
+
+AUTHOR
+     Khalid Sayood, University of Nebraska - Lincoln.

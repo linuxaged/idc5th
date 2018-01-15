@@ -1,0 +1,17 @@
+NAME
+     entfile - computes the zero order entropy of a a file.
+
+SYNOPSIS
+     entfile file
+
+DESCRIPTION
+     This program counts the number of times different eight  bit
+     characters  in  a  file occur, uses the counts to generate a
+     zero order probability model, and then computes the  entropy
+     for this model.
+
+     The program needs the subroutine ent.
+
+
+AUTHOR
+     Khalid Sayood, University of Nebraska - Lincoln.

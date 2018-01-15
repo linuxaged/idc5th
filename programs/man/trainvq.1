@@ -1,0 +1,60 @@
+.TH trainvq 1 
+.UC 4
+.SH NAME
+trainvq \- trains a vector quantizer codebook. 
+.SH SYNOPSIS
+.HP
+.B trainvq  ts_file
+[
+.BI \-c " codefile"
+][
+.BI \-d " dimension"
+][
+.BI \-b " cb_size"
+][
+.BI \-t " ts_size"
+][
+.B \-h
+]
+.SH DESCRIPTION
+This program can be used to train a vector quantizer using the LBG algorithm.
+The purpose of this program is more to allow the user to explore the process,
+for specific applications the program would have to be modified.  There is
+also a program available for training a vector quantizer specifically
+for image compression - trvqsp_img.  This program uses either a user specified
+initial codebook or selects the initial codebook from the training set.  A
+more sophisticated approach is used by the program trvqsplit which uses
+the splitting approach specified by Linde, Buzo, and Gray.   The program 
+does not attempt to resolve the empty cell problem.
+
+The ts_file contains the training set.
+The program needs the following subroutines:
+.IP vqencode
+.LP
+and the header file idc.h
+
+.SH OPTIONS
+.TP
+.BI \-c " codefile"
+This is the file containing the initial codebook.  If
+no file name for the initial codebook is provided,  then when the
+codebook size is available, that many vectors from the training
+set are used as the initial codebook.
+.TP
+.BI \-d " dimension"
+This is the dimension of the vectors.
+.TP
+.BI \-b " cb_size"
+This is the size of the codebook.
+.TP
+.BI \-t " ts_size"
+This is the size of the training set.  This should be considerably larger
+than the codebook size.
+.TP
+.BI \-h
+This option will provide the usage.
+
+.SH AUTHOR
+Khalid Sayood, University of Nebraska - Lincoln.
+
+

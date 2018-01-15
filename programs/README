@@ -1,0 +1,73 @@
+
+
+These directories contain programs and documentations related in some way
+to "Introduction to Data Compression" by K. Sayood, published by 
+Morgan-Kaufmann Publishers.  The directory structure is as follows
+
+                            
+                           /pub/sayood/programs 
+                                     |            
+                           ____________________  
+                           |                  | 
+                          man                doc
+
+The programs themselves and a Makefile are in the this directory.  The
+programs have been written in C.  They have been tested on a number of 
+workstations and PCs.  They have always compiled under gcc, and should compile 
+using other compilers as well.  If you do not have a copy of gcc you can
+find out how to obtain it (and other gnu programs) from
+ftp://prep.ai.mit.edu/pub/gnu/GNUinfo/FTP.  
+
+These programs are not production quality.  Their main purpose is to help 
+the reader explore different data compression techniques.  They should be 
+quite easy to modify for a specific application and you are welcome to 
+do so.  If you have suggestions or discover any bugs it would be greatly 
+appreciated if you could let us know at idc@eecomm.unl.edu.
+
+The documentation for the programs have been provided in two ways.  The
+subdirectory man contains the documentation in a form suitable for man
+pages on unix systems.  You can generate the man page for a particular
+program called "prog" by using nroff
+
+                 nroff -man prog.1 | more
+
+or by putting the files in the man directory into /usr/local/man/man1
+and typing "man prog".  The subdirectory doc contains the same documents
+in ASCII.  You can also get help on how to use a program by running it with
+the option -h.  Thus "prog -h" will get you information on how to run
+the program prog.
+
+Most of the examples in the book were generated using these programs.  If
+you are reading the book you might find it helpful to repeat the examples
+in the book.
+
+There are quite a few very good programs available in the public domain
+which implement different data compression techniques or standards.  The
+subdirectory /pub/sayood/other contains pointers to some of these programs.
+
+
+DISCLAIMER:
+
+All programs and supporting material are presented "as is" without warranty
+of any kind, either expressed or implied, including but not limited to
+implied warranties of merchantability and fitness for a particular purpose.
+Neither Morgan Kaufmann Publishers, the authors, nor anyone else who has been
+involved in the creation, production, or delivery of this software shall be
+liable for any direct, incidental, or consequential damages resulting from
+use of the software or documentation, regardless of the theory of liability.
+
+The entire risk as to quality, performance or results due to use of the
+software is assumed by the user and the software is provided without support
+or obligation of any kind to assist in its use, modification, or enhancement.
+Should the software prove defective, the user (and not Morgan Kauffman
+Publishers or others involved in the creation of this software) shall assume
+the entire cost of all necessary servicing, repair or correction to the
+software and any other software or equipment used in connection with it.
+Morgan Kaufmann Publishers, Inc. does not accept any liability with respect
+to infringement of copyrights, trade secrets, or patents by this software
+or documentation.
+
+
+
+
+

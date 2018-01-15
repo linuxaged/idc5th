@@ -1,0 +1,88 @@
+.TH aqfimg_enc 1
+.UC 4
+.SH NAME
+aqfimg_enc \- lossy compression of grey level images using forward adaptive 
+quantization.
+.SH SYNOPSIS
+.HP
+.B aqfimg_enc
+[
+.BI \-i " infile"
+][
+.BI \-o " outfile"
+][
+.BI \-l " numlev"
+][
+.BI \-b " numbits"
+][
+.BI \-s " blocksize"
+][
+.BI \-x " row_size"
+][
+.BI \-y " col_size"
+][
+.B \-h
+]
+.SH DESCRIPTION
+This program provides lossy compression of a grey-scale (8 bits/pixel) image
+using forward adaptive quantization.  The maximum and minumum pixel values
+in a block of size blocksize is obtained and the image is quantized using a 
+uniform quantizer with stepsize equal to the difference between the
+minimum and maximum values divided by the number of levels.  The maximum and
+minimum values for each block are stored using eight bits while the quantizer
+labels are stored using [log_2 numlev] bits.  The resulting output can be
+further compressed using a variable length code.
+
+
+The program needs the following subroutines:
+.IP readimage
+.IP image_size
+.IP encuqi
+.IP stuffit
+.LP
+and the header file idc.h
+
+.SH OPTIONS
+.TP
+.BI \-i " infile"
+The name of the file containing the input image.  The image is assumed to be
+stored using 8 bits/pixel in raw format.
+.TP
+.BI \-o " outfile"
+This will contain the compressed image.  The various parameters required
+for decompression are also stored in the same file.  If this option is not
+used the program writes the decorrelated image to standard out.  This is useful
+if the output of the program is to be piped directly to a variable length coder.
+.TP
+.BI \-l " numlev"
+If this value is provided
+numbits need not be specified.  The number of bits needed to represent the
+lables, numbits, need not be specified. numbits is computed as 2^numlev.
+.TP
+.BI \-b " numbits"
+This is the number of bits needed to specify a quantizer label.  If this
+value is specified, the number of levels, numlev, need not be specified.
+numlev is computed as numlev = 2^numbits.
+.TP
+.BI\-s " blocksize"
+This is the size of one side of the square block over which the quantizer
+parameters are computed.
+.TP
+.BI \-x " row_size"
+This is the number of pixels in each row of the image.
+.TP
+.BI \-y " col_size"
+This is the number of rows of pixels.
+
+If the row_size and col_size are not provided the program attempts to check 
+to see if the image corresponds to any of the standard sizes it is familiar 
+with.  To add to the list of standard sizes, edit image_size.c
+
+.TP
+.BI \-h
+This option will provide the usage.
+
+.SH AUTHOR
+Khalid Sayood, University of Nebraska - Lincoln.
+
+

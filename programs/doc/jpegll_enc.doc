@@ -1,0 +1,83 @@
+NAME
+     jpegll_enc - decorrelates an image using one  of  the  eight
+     lossless JPEG modes.
+
+SYNOPSIS
+     jpegll_enc [ -i infile ][ -o outfile ][ -x  row_size  ][  -y
+          col_size ][ -m mode ][ -h ]
+
+DESCRIPTION
+     This program takes a grey-level  image  (8  bits/pixel)  and
+     decorrelates  it using one of the eight JPEG lossless modes.
+     The program assumes that the input is in  raw  format.   The
+     output  can  be  written  to a file or to standard out.  The
+     data is written out without entropy coding so the effect  of
+     using  this  program  is  data  expansion  instead  of  data
+     compression.  In order to get compression the output of this
+     file has to be encoded using a variable length code.
+
+     The program needs the following subroutines:
+
+     readimage
+
+     image_size
+
+     and the header file idc.h
+
+
+OPTIONS
+     -i infile
+          The name of the file containing the input  image.   The
+          image is assumed to be stored using 8 bits/pixel in raw
+          format.
+
+     -o outfile
+          This will contain the decorrelated residual image.   If
+          this option is not used the program writes the decorre-
+          lated image to standard out.  This  is  useful  if  the
+          output  of  the  program  is  to be piped directly to a
+          variable length coder.
+
+     -m mode
+          The JPEG lossless compression standard specifies  eight
+          different prediction modes with mode 0 being no predic-
+          tion.  The value of mode specifies which of  the  eight
+          predictors  is  to be used for decorrelation.  The mode
+          is written out to the encoded file along with the resi-
+          duals.
+
+The JPEG lossless modes are:
+     0                   No prediction
+
+     1                   P[i,j] = I[i-1,j]
+
+     2                   P[i,j] = I[i,j-1]
+
+     3                   P[i,j] = I[i-1,j-1]
+
+     4                   P[i,j] = I[i,j-1] + I[i-1,j] -  I[i-1,j-
+                         1]
+
+     5                   P[i,j] = I[i,j-1]  +  (I[i-1,j]  -  I[i-
+                         1,j-1])/2
+
+     6                   P[i,j] = I[i-1,j]  +  (I[i,j-1]  -  I[i-
+                         1,j-1])/2
+
+     7                   P[i,j] = (I[i,j-1] + I[i-1,j])/2
+
+     Where P[i,j] is the prediction for the pixel in row i column
+     j, and I[i,j] is the pixel value at row i column j.
+
+     -x row_size
+          This is the number of pixels in each row of the image.
+
+     -y col_size
+          This is the number of rows of pixels.
+
+
+     -h   This option will provide the usage.
+
+
+AUTHOR
+     Khalid Sayood, University of Nebraska - Lincoln.

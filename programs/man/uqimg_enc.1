@@ -1,0 +1,98 @@
+.TH uqimg_enc 1 "July 15, 1995" 1
+.UC 4
+.SH NAME
+uqimg_enc \- compresses an image in a lossy fashion using uniform quantization.
+.SH SYNOPSIS
+.HP
+.B uqimg_enc 
+[
+.BI \-i " infile"
+][
+.BI \-o " outfile"
+][
+.BI \-l " numlev"
+][
+.BI \-b " numbits"
+][
+.BI \-m " max_value"
+][
+.BI \-t " min_value"
+][
+.BI \-x " row_size"
+][
+.BI \-y " col_size"
+][
+.B \-h
+]
+.SH DESCRIPTION
+This program takes a grey-level image (8 bits/pixel) and compresses it in a
+lossy fashion using uniform quantization.  The quantizer labels are encoded
+using a fixed length code.  The output can be further encoded using
+a variable length coder for further compression.  The step size of the
+quantizer is the difference between the maximum and minimum values divided
+by the number of levels.  The maximum and minimum values can be specified by
+the user.  The default values are 255 and 0.
+
+The program needs the following subroutines:
+.IP readimage
+.IP image_size
+.IP encuqi
+.LP
+and the header file idc.h
+
+.SH OPTIONS
+.TP
+.BI \-i " infile"
+The name of the file containing the input image.  The image is assumed to be
+stored using 8 bits/pixel in raw format.
+.TP
+.BI \-o " outfile"
+This will contain the compressed  image.   The  various
+parameters  required  for decompression are also stored
+in the same file.  If this option is not used the  pro-
+gram  writes  the  decorrelated  image to standard out.
+This is useful if the output of the program  is  to  be
+piped directly to a variable length coder.
+.TP
+.BI \-l " numlev"
+This is the size of the quantizer reproduction alphabet.
+If this value is provided numbits need  not  be  speci-
+fied.   The  number  of  bits  needed  to represent the
+lables, numbits, need not be specified. numbits is com-
+puted as [log_2 numlev] ([x] is the smallest integer greater than or equal to 
+x).
+.TP
+.BI \-b " numbits"
+This is the number of bits needed to  specify  a  quantizer label.  If this 
+value is specified, the number of levels, numlev, need not be specified.  
+numlev is  computed as numlev = 2^numbits.
+.TP
+.BI \-m " max_value"
+This is the maximum value that the input can take.  This value along with
+min_value is used to compute the quantizer step size.  The default max_value
+is 255.
+.TP
+.BI \-t " min_value"
+This is the minimum value that the input can take.  This value along with
+max_value is used to compute the quantizer step size.  The default min_value
+is 0.
+.TP
+.BI \-x " row_size"
+This is the number of pixels in each row of the image.
+.TP
+.BI \-y " col_size"
+This is the number of rows of pixels.
+
+If the row_size and col_size are not provided the program attempts to check
+to see if the image corresponds to any of the standard sizes it is familiar
+with.  To add to the list of standard sizes, edit image_size.c
+
+
+.TP
+.BI \-h
+This option will provide the usage.
+
+.SH AUTHOR
+Khalid Sayood, University of Nebraska - Lincoln.
+
+

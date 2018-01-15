@@ -1,0 +1,71 @@
+.TH nuq_ran 1 
+.UC 4
+.SH NAME
+nuq_ran \- explores nonuniform quantization of random inputs.
+.SH SYNOPSIS
+.HP
+.B nuq_ran  qfile
+[
+.BI \-n " num"
+][
+.BI \-d " distribution"
+][
+.B \-e
+][
+.B \-h
+]
+.SH DESCRIPTION
+This program can be used to explore the performance of non-uniform
+quantizers operating on random inputs.  Four possibilities for the 
+input distribution are available.  These include uniform, Laplacian, Gaussian,
+and gamma (the gamma distribution is not very accurate).  More distributions
+can be added by modifying rangen.c and the call to rangen.
+The quantizer parameters are
+obtained from the file qfile, while the distribution of the input is
+specified by the user.  
+The file qfile contains the number of levels, boundary and
+reconstruction values for the nonuniform quantizer.  The first
+number is the number of reconstruction levels in the quantizer, numlev.
+The next (numlev-1) numbers are the inner boundary values (note
+that there are numlev+1 boundary values.  The extreme values are
+assumed to be plus and minus infinity.  The next numlev values
+are the reconstruction values.  Some quan_files should be available
+at the location you found this program.  The name of the files
+are of the form xxnn.dat, xx is ga for Gaussian, la for Laplacian
+and gm for Gamma.  nn denotes the number of levels.
+
+
+The program needs the following subroutines:
+.IP rangen
+.IP nuquan_enc
+.IP nuquan_dec
+.IP ent
+.LP
+and the header file idc.h
+
+.SH OPTIONS
+.TP
+.BI \-n " num"
+This is the number of inputs to be generate for the simulation.  It is difficult
+to get a reasonably accurate estimate with num less than 10,000.
+.TP
+.BI \-d " distribution"
+This is a number specifying the input probability distribution
+A value of 0 corresponds to Uniform distribution.
+A value of 1 corresponds to Gaussian distribution.
+A value of 2 corresponds to Laplacian distribution.
+A value of 3 corresponds to Gamma distribution.  This
+last option should be used with care, as the function
+generating the Gamma distribution is not entirely reliable.
+.TP
+.BI \-e
+If this option is specified the program calculates the output entropy
+of the quantizer.
+.TP
+.BI \-h
+This option will provide the usage.
+
+.SH AUTHOR
+Khalid Sayood, University of Nebraska - Lincoln.
+
+

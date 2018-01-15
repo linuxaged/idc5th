@@ -1,0 +1,89 @@
+NAME
+     dpcm_enc - compresses a speech or audio file using dpcm with
+     fixed quantizer and predictor.
+
+SYNOPSIS
+     dpcm_enc [ -i infile ][ -o outfile ][ -q qfile ][  -p  pfile
+          ][ -s scale ][ -e ][ -h ]
+
+DESCRIPTION
+     This program uses a fixed quantizer and  predictor  to  dif-
+     ferentially  encode  a speech or audio file.  The input data
+     is assumed to be in raw format (no  headers)  and  digitized
+     using  a  16  bit  linear A/D (be careful of byte ordering).
+     The dpcm encoder output is  encoded  using  a  fixed  length
+     code.   Further  compression  may be available if a variable
+     length code is used.
+
+     The quantizer file contains the number of  levels,  boundary
+     and reconstruction values for the nonuniform quantizer.  The
+     first number is the number of reconstruction levels  in  the
+     quantizer,  numlev.   The  next  (numlev-1)  numbers are the
+     inner boundary values (note that there are numlev+1 boundary
+     values.  The extreme values are assumed to be plus and minus
+     infinity.  The next numlev  values  are  the  reconstruction
+     values.  Some quan_files should be available at the location
+     you found this program.  The name of the files  are  of  the
+     form  xxnn.dat,  xx is ga for Gaussian, la for Laplacian and
+     gm for Gamma.  nn denotes the number of levels.
+
+     The predictor file contains the order of the predictor  fol-
+     lowed by the predictor coefficients.
+
+
+     The program needs the following subroutines:
+
+     readau
+
+     nuquan_enc
+
+     nuquan_dec
+
+     predictor
+
+     norm
+
+     stuffit
+
+     get_file_size
+
+     ent
+     and the header file idc.h
+
+
+OPTIONS
+     -i infile
+          This is the input speech or audio file.  It is  assumed
+          that  the input data is digitized using a 16 bit linear
+          A/D.
+
+     -o outfile
+          The compressed speech or audio is  stored  in  outfile.
+          The  encoder  output  is  encoded  using a fixed length
+          code.  More compression may be available if a  variable
+          length code is used.
+
+     -q qfile
+          The file qfile contains the number of levels,  boundary
+          and reconstruction values for the nonuniform quantizer.
+          For more details see above.
+
+     -p pfile
+          The file pfile contains the order of the predictor  (as
+          an int) followed by the predictor coefficients (read as
+          floats).  If this option is not used the program uses a
+          one tap predictor with predictor coefficient 0.86 (this
+          is generally a poor choice).
+
+     -s scale
+          This number scales the input  to  the  quantizer.   The
+          default value is 1.
+
+     -e   If this option is specified the program calculates  the
+          output entropy of the quantizer.
+
+     -h   This option will provide the usage.
+
+
+AUTHOR
+     Khalid Sayood, University of Nebraska - Lincoln.

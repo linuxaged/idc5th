@@ -1,0 +1,45 @@
+NAME
+     uqimg_dec - decodes a file created by uqimg_enc to obtain  a
+     reconstructed image.
+
+SYNOPSIS
+     uqimg_dec [ -i infile ][ -o outfile ][ -h ]
+
+DESCRIPTION
+     This  program  provides  a  reconstruction  for   an   image
+     compressed using uqimg_enc (uniform quantization).  The out-
+     put is a grey-scale (8 bits/pixel) image which can be  writ-
+     ten to a file or to standard out.  The input to this program
+     can be from a file or from standard in.
+
+
+     The program needs the following subroutines:
+
+     decuqi
+
+     unstuff
+
+     and the header file idc.h
+
+
+OPTIONS
+     -i infile
+          This contains the compressed image.  The various param-
+          eters required for decompression are also stored in the
+          same file.  If this option  is  not  used  the  program
+          reads from standard in.  This is useful if the input to
+          the program is to be generated  by  a  variable  length
+          decoder.
+
+     -o outfile
+          The name  of  the  file  containing  the  reconstructed
+          image.   The  image is stored using 8 bits/pixel in raw
+          format.  If this option is not used the image is  writ-
+          ten to standard out.
+
+
+     -h   This option will provide the usage.
+
+
+AUTHOR
+     Khalid Sayood, University of Nebraska - Lincoln.

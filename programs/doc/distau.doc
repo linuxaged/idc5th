@@ -1,0 +1,40 @@
+NAME
+     distau - computes various performance measures between  ori-
+     ginal and reconstructed speech and audio files.
+
+SYNOPSIS
+     distau file1 file2 [ -h ]
+
+DESCRIPTION
+     This program computes the mean squared error, mean  absolute
+     error,  and signal to noise ratio (in dB), between file1 and
+     file2.  It assumes file1 to be the original speech/audio and
+     file2  to be the reconstructed speech/audio. The samples are
+     assumed to be 16 bit uniformly quantized stored in raw  for-
+     mat.
+
+     If A[i] is the i'th sample value of  the  original  (file1),
+     R[i]   is   the  i'th  sample  value  of  the  reconstructed
+     speech/audio, and < > denotes average value, then  the  per-
+     formance  measures  computed  by this program are defined as
+     follows.
+
+     mean squared error = <(A[i] - R[i])^2>.
+
+     mean absolute error = <|A[i] - R[i]|>.
+
+     signal to noise ratio = <A[i]^2> / <(I[i,j] - R[i])^2>.
+
+
+     The program needs the following subroutines:
+
+     readau
+
+     get_file_size
+
+     and the header file idc.h
+
+
+
+AUTHOR
+     Khalid Sayood, University of Nebraska - Lincoln.

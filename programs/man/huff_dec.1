@@ -1,0 +1,50 @@
+.TH huff_dec
+.UC 4
+.SH NAME
+huff_dec - decodes a file encoded using Huffman encoding, encoded using huff_enc.
+.SH SYNOPSIS
+.HP
+.B huff_dec 
+[
+.BI \-i " infile"
+][
+.BI \-o " outfile"
+][
+.BI \-c " codefile"
+][
+.B \-h
+]
+.SH DESCRIPTION
+This program takes an file encoded using huff_enc and decodes it.  It will 
+either read a code to use from a file or it will read the code that was
+written as a header on the encoded file.
+
+The program needs the following subroutines:
+.IP getcode
+.LP
+and the header im.h
+
+.SH OPTIONS
+.TP
+.BI \-i " infile"
+The name of the file containing the output of huff_enc.  If this option is
+not used the program reads from standard in.
+.TP
+.BI \-o " outfile"
+This will contain the decoded file.  If this option is not used
+the program writes the decoded file to standard out.
+.TP
+.BI \-c " codefile"
+The name of the file if you want to use a stored code instead
+of one written as a header. The defalt is to read one as a
+header.
+.TP
+.BI \-h
+This will produce the usage.
+.SH BUGS
+If the file was encoded using the -c option and huff_dec is not provided 
+with the right codefile, anything can happen.
+.SH AUTHOR
+Sherrie Faltys, University of Nebraska - Lincoln.
+
+

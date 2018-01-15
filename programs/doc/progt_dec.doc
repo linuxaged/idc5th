@@ -1,0 +1,38 @@
+NAME
+     progt_dec - decodes files encoded  by  progt_enc  to  obtain
+     approximations.
+
+SYNOPSIS
+     progt_enc [ -i infile ][ -o outfile ][ -h ]
+
+DESCRIPTION
+     This program can be used along with progt_enc to  experiment
+     with   different   approximations  to  use  for  progressive
+     transmission application.  This program acts  as  a  decoder
+     for progt_enc.
+
+     The program needs no subroutines.
+
+     readimage
+
+     image_size
+
+     and the header file idc.h
+
+
+OPTIONS
+     -i infile
+          This contains the binary  code  for  the  approximation
+          generated  by progt_enc. If this option is not used the
+          program reads the approximation from standard in.
+
+     -o outfile
+          The name  of  the  file  containing  the  reconstructed
+          approximation.   The image is stored using 8 bits/pixel
+          in raw format.
+
+     -h   This option will provide the usage.
+
+
+AUTHOR
+     Khalid Sayood, University of Nebraska - Lincoln.

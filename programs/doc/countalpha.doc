@@ -1,0 +1,18 @@
+NAME
+     countalpha - counts the number of times the letters  a  -  z
+     occur and computes a probability model.
+
+SYNOPSIS
+     countalpha file1 file2
+
+DESCRIPTION
+     This program counts the number  of  times  the  letters  a-z
+     occur in file1 and computes a probability model.  The proba-
+     bility model is written in file2.  The program does not dis-
+     tinguish between upper and lower case letters.
+
+     The program does not need any subroutines.
+
+
+AUTHOR
+     Khalid Sayood, University of Nebraska - Lincoln.

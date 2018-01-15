@@ -1,0 +1,46 @@
+NAME
+     trvqsplit - trains a vector  quantizer  codebook  using  the
+     splitting approach for obtaining the initial codebook.
+
+SYNOPSIS
+     trvqsplit ts_file [ -d dimension ][ -b cb_size ][ -t ts_size
+          ][ -h ]
+
+DESCRIPTION
+     This program can be used to train a vector  quantizer  using
+     the  LBG  algorithm.   The codebook is initialized using the
+     splitting approach proposed by Linde, Buzo,  and  Gray.   If
+     the user wishes to experiment with an initial codebook, s/he
+     should use the program trainvq.  The purpose of this program
+     is  more  to  allow  the  user  to  explore the process, for
+     specific applications the program would have to be modified.
+     There  is  also  a  program  available for training a vector
+     quantizer specifically for image compression  -  trvqsp_img.
+     This  program  does  not  attempt  to resolve the empty cell
+     problem.
+
+     The ts_file contains the training set.   The  program  needs
+     the following subroutines:
+
+     vqencode
+
+     and the header file idc.h
+
+
+OPTIONS
+     -d dimension
+          This is the dimension of the vectors.
+
+     -b cb_size
+          This is the size of the codebook.
+
+     -t ts_size
+          This is the size of the training set.  The size of  the
+          training  set  should  be  considerably larger than the
+          codebook size.
+
+     -h   This option will provide the usage.
+
+
+AUTHOR
+     Khalid Sayood, University of Nebraska - Lincoln.

@@ -1,0 +1,40 @@
+.TH jpegll_dec
+.UC 4
+.SH NAME
+jpegll_dec \- reconstructs an image that has been decorrelated by jpegll_enc.
+.SH SYNOPSIS
+.HP
+.B jpegll_dec 
+[
+.BI \-i " infile"
+][
+.BI \-o " outfile"
+][
+.B \-h
+]
+.SH DESCRIPTION
+This program reconstructs a grey-level (8 bits/pixel) image from the 
+residuals obtained by using jpegll_enc.  The input can come from a file
+or from standard in.  The output can be written to a file or standard out.
+If the output of jpegll_enc was encoded using a variable length code,
+a variable length decoder needs to be employed prior to jpegll_dec.
+The output of the variable length decoder can be piped to this program.
+
+The program does not need any subroutines.
+
+.SH OPTIONS
+.TP
+.BI \-i " infile"
+The name of the file containing the output of jpegll_enc.  If this option is
+not used the program reads from standard in.
+.TP
+.BI \-o " outfile"
+This will contain the reconstructed image.  If this option is not used
+the program writes the image to standard out.
+.TP
+.BI \-h
+This will produce the usage.
+.SH AUTHOR
+Khalid Sayood, University of Nebraska - Lincoln.
+
+

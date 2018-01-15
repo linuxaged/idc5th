@@ -1,0 +1,70 @@
+.TH distimg
+.UC 4
+.SH NAME
+distimg \- computes various performance measures between original and 
+reconstructed images.
+.SH SYNOPSIS
+.HP
+.B distimg  file1  file2
+[
+.BI \-p " peak_value"
+][
+.BI \-x " row_size"
+][
+.BI \-y " col_size"
+][
+.BI \-m " mode"
+][
+.B \-h
+]
+.SH DESCRIPTION
+This program computes the mean squared error, mean absolute error, signal
+to noise ratio (in dB), and the peak signal-to-noise ratio (in dB), between
+file1 and file2.  It assumes file1 to be the original image and file2 to be the
+reconstructed image.  The images are assumed to be grey-level images (8 
+bits/pixel) stored in raw format.  
+
+If I[i,j] is the pixel value of the original image (file1) at location i,j
+R[i,j] is the pixel value of the reconstructed image at location i,j,
+and < > denotes average value, then
+the performance measures computed by this program are defined as follows.
+
+mean squared error = <(I[i,j] - R[i,j])^2>.
+
+mean absolute error = <|I[i,j] - R[i,j]|>.
+
+signal to noise ratio = <I[i,j]^2> / <(I[i,j] - R[i,j])^2>.
+
+peak signal to noise ratio = peak_value^2 / <(I[i,j] - R[i,j])^2>.
+
+
+The program needs the following subroutines:
+.IP readimage
+.IP image_size
+.LP
+and the header file idc.h
+
+.SH OPTIONS
+.TP
+.BI \-p " peak_value"
+This value is used to compute the peak signal-to-noise ratio.  If no value is
+provided the program assumes a value of 255.
+.TP
+.BI \-x " row_size"
+This is the number of pixels in each row of the image.
+.TP
+.BI \-y " col_size"
+This is the number of rows of pixels.
+
+If the row_size and col_size are not provided the program attempts to check 
+to see if the image corresponds to any of the standard sizes it is familiar 
+with.  To add to the list of standard sizes, edit image_size.c
+
+.TP
+.BI \-h
+This option will provide the usage.
+
+.SH AUTHOR
+Khalid Sayood, University of Nebraska - Lincoln.
+
+

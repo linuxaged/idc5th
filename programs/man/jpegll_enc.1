@@ -1,0 +1,94 @@
+.TH jpegll_enc 1 "July 15, 1995" 1
+.UC 4
+.SH NAME
+jpegll_enc \- decorrelates an image using one of the eight lossless JPEG modes.
+.SH SYNOPSIS
+.HP
+.B jpegll_enc 
+[
+.BI \-i " infile"
+][
+.BI \-o " outfile"
+][
+.BI \-x " row_size"
+][
+.BI \-y " col_size"
+][
+.BI \-m " mode"
+][
+.B \-h
+]
+.SH DESCRIPTION
+This program takes a grey-level image (8 bits/pixel) and decorrelates
+it using one of the eight JPEG lossless modes.  The program assumes that
+the input is in raw format.  The output can be written to a file or to
+standard out.  The data is written out without entropy coding so the
+effect of using this program is data expansion instead of data compression.
+In order to get compression the output of this file has to be encoded using
+a variable length code.
+
+The program needs the following subroutines:
+.IP readimage
+.IP image_size
+.LP
+and the header file idc.h
+
+.SH OPTIONS
+.TP
+.BI \-i " infile"
+The name of the file containing the input image.  The image is assumed to be
+stored using 8 bits/pixel in raw format.
+.TP
+.BI \-o " outfile"
+This will contain the decorrelated residual image.  If this option is not used
+the program writes the decorrelated image to standard out.  This is useful
+if the output of the program is to be piped directly to a variable length coder.
+.TP
+.BI \-m " mode"
+The JPEG lossless compression standard specifies eight different prediction
+modes with mode 0 being no prediction.  The value of mode specifies which of the
+eight predictors is to be used for decorrelation.  The mode is written out
+to the encoded file along with the residuals.
+.SH "The JPEG lossless modes are:"
+.TP 20 
+0
+No prediction
+.TP 20
+1
+P[i,j] = I[i-1,j]
+.TP 20
+2
+P[i,j] = I[i,j-1]
+.TP 20
+3
+P[i,j] = I[i-1,j-1]
+.TP 20
+4
+P[i,j] = I[i,j-1] + I[i-1,j] - I[i-1,j-1]
+.TP 20
+5
+P[i,j] = I[i,j-1] + (I[i-1,j] - I[i-1,j-1])/2
+.TP 20
+6
+P[i,j] = I[i-1,j] + (I[i,j-1] - I[i-1,j-1])/2
+.TP 20
+7
+P[i,j] = (I[i,j-1] + I[i-1,j])/2
+.LP
+Where P[i,j] is the prediction for the pixel in row i column j, and I[i,j]
+is the pixel value at row i column j.
+.TP
+.BI \-x " row_size"
+This is the number of pixels in each row of the image.
+.TP
+.BI \-y " col_size"
+This is the number of rows of pixels.
+
+.TP
+.BI \-h
+This option will provide the usage.
+
+.SH AUTHOR
+Khalid Sayood, University of Nebraska - Lincoln.
+
+

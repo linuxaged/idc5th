@@ -1,0 +1,72 @@
+NAME
+     vqimg_enc - compresses an image using vector quantization.
+
+SYNOPSIS
+     vqimg_enc [ -i imagein ][ -o cmpfile ][ -c  codebook  ][  -x
+          row_size ][ -y col_size ][ -h ]
+
+DESCRIPTION
+     This program can be used to compress an image  using  vector
+     quantization.  The codebook is obtained using the trvqsp_img
+     program. The dimensions of the vector and the  size  of  the
+     codebook  are specified in the file containing the codebook.
+     The indices of the vectors are coded using  a  fixed  length
+     code.   Thus  more compression can be obtained if the output
+     of this program is encoded using a  variable  length  coder.
+     If  an output file is not specified the output is written to
+     standard out.  This feature can be used to pipe  the  output
+     of  this  program  directly to a variable length coder.  The
+     images are assumed to be  8  bit  grey-level  images  stored
+     using raster scan order.
+
+     The dimensions of the image can be specified by the user  or
+     obtained directly by the program.  The program "knows" about
+     only a small set of standard image sizes.  The user can  add
+     to  the  set by editing the file image_size.c.  Or, the user
+     can simply specify the dimensions of the image  at  run-time
+     using the options -x and -y.
+
+     The codefile contains the codebook in  binary  format.   The
+     codebook  is preceded by a 12 byte header which contains the
+     dimensions of the vector as well as the size  of  the  code-
+     book.
+
+     The program needs the following subroutines:
+
+     vqencode
+
+     readimage
+
+     image_size
+
+     stuffit
+
+     and the header file idc.h
+
+
+OPTIONS
+     -i imagein
+          This is the image to be compressed.  It is assumed that
+          this  image is a grey scale (8 bits/pixel) image stored
+          in raster scan order.
+
+     -o cmpfile
+          This is the compressed file.  The  file  also  contains
+          the  name  of the codebook used during vector quantiza-
+          tion.
+
+     -c codebook
+          This is the codebook used for compression.   The  code-
+          book can be generated using trvqsp_img.
+
+     -x row_size
+          This is the number of pixels in each row.
+
+     -y col_size
+          This is the number of rows in the image.
+
+     -h   This option will provide the usage.
+
+
+AUTHOR
+     Khalid Sayood, University of Nebraska - Lincoln.

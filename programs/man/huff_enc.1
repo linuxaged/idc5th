@@ -1,0 +1,65 @@
+.TH huff_enc 1
+.UC 4
+.SH NAME
+huff_enc - encodes a file using huffman encoding
+.SH SYNOPSIS
+.HP
+.B huff_enc 
+[
+.BI \-i " infile"
+][
+.BI \-o " outfile"
+][
+.BI \-c " codefile"
+][
+.BI \-s " storecode"
+][
+.B \-h
+]
+.SH DESCRIPTION
+This program takes a file and encodes it.  It will either read a code
+to use from a file or it will calculate its own code to use.  The
+code used will either be written at the start of the encoded file
+or it can be written to its own file.
+
+
+The program needs the following subroutines:
+.IP value
+.IP sort
+.IP huff
+.IP files
+.IP create_code
+.IP create_list
+.IP getcode
+.LP
+and the header file idc.h
+
+.SH OPTIONS
+.TP
+.BI \-i " infile"
+The name of the file containing the input. The program
+will check the size of the file before it encodes it.
+If this option is not given the program assumes the input is being
+piped and will read from stdin.
+
+.TP
+.BI \-o " outfile"
+The name of the file the encoded file should be written to.
+If this option is not given the program will write to stdout.
+.TP
+.BI \-c " codefile"
+The name of the file if you want to use a stored code instead
+of calculating one. The defalt is to calculate a code.
+.TP
+.BI \-s " storecode"
+The name of the file you want the code written to.  If no
+filename is given the code will be written as a header
+on the encoded file.
+.TP
+.BI \-h
+This option will provide the usage.
+
+.SH AUTHOR
+Sherrie Faltys, University of Nebraska - Lincoln.
+
+
